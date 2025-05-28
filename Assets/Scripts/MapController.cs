@@ -10,7 +10,7 @@ public class MapController : MonoBehaviour
     public Vector3 noTerrainPosition;
     public LayerMask terrainMask;
     public GameObject currentChunk;
-    PlayerMovement pm;
+    PlayerController pm;
 
     [Header("Optimization")]
     public List<GameObject> spawnedChunks;
@@ -22,7 +22,7 @@ public class MapController : MonoBehaviour
 
     void Start()
     {
-        pm = FindObjectOfType<PlayerMovement>();
+        pm = FindObjectOfType<PlayerController>();
     }
 
     void Update()

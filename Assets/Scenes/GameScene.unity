@@ -136,7 +136,6 @@ GameObject:
   - component: {fileID: 20923002}
   - component: {fileID: 20923001}
   - component: {fileID: 20923000}
-  - component: {fileID: 20923003}
   - component: {fileID: 20923004}
   m_Layer: 0
   m_Name: Character
@@ -280,22 +279,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &20923003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 20922997}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9923d0cc4d384d0479457ea32e0fcd87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 20923001}
-  animator: {fileID: 20923002}
-  movement: 5
-  moveDir: {x: 0, y: 0, z: 0}
 --- !u!114 &20923004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a00740cd91bed594bbc1ce7f4cf9247a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 3
   sprite: {fileID: 0}
 --- !u!1 &152218735
 GameObject:
@@ -334,7 +317,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 152218735}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09f33e126fc5c774490061265be4d581, type: 3}
   m_Name: 
@@ -871,127 +854,127 @@ PrefabInstance:
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[33]
       value: 
-      objectReference: {fileID: 3144590597548319942, guid: fe91cb603d59fa849be27949d58d5090, type: 3}
+      objectReference: {fileID: 4834810533530317497, guid: e6800e6452e2c4b4fb1a7a877fdb1bdd, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[34]
       value: 
-      objectReference: {fileID: 4834810533530317497, guid: e6800e6452e2c4b4fb1a7a877fdb1bdd, type: 3}
+      objectReference: {fileID: 727887298812987342, guid: a86def0047c2e5b41b5dc20a4247f9ea, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[35]
       value: 
-      objectReference: {fileID: 727887298812987342, guid: a86def0047c2e5b41b5dc20a4247f9ea, type: 3}
+      objectReference: {fileID: 2150417691278803019, guid: 514ea3aec23636543b729dcd8a45119b, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[36]
       value: 
-      objectReference: {fileID: 2150417691278803019, guid: 514ea3aec23636543b729dcd8a45119b, type: 3}
+      objectReference: {fileID: 1469177560885494526, guid: 85df23c1b65766f49a3cd88f1560257c, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[37]
       value: 
-      objectReference: {fileID: 1469177560885494526, guid: 85df23c1b65766f49a3cd88f1560257c, type: 3}
+      objectReference: {fileID: 7524170339142484279, guid: 7b68a7c1f1ee5774b9063866bd869aa8, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[38]
       value: 
-      objectReference: {fileID: 7524170339142484279, guid: 7b68a7c1f1ee5774b9063866bd869aa8, type: 3}
+      objectReference: {fileID: 8014082788446473609, guid: 4220c5e25bc8e804fb7ca3a3ec367a27, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[39]
       value: 
-      objectReference: {fileID: 8014082788446473609, guid: 4220c5e25bc8e804fb7ca3a3ec367a27, type: 3}
+      objectReference: {fileID: 5149943999956263399, guid: 0b73157cb22f82a4fa4a1003b9180f21, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[40]
       value: 
-      objectReference: {fileID: 5149943999956263399, guid: 0b73157cb22f82a4fa4a1003b9180f21, type: 3}
+      objectReference: {fileID: 3697765106825849225, guid: d11d596707d9b0a4ebce713b42896b4b, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[41]
       value: 
-      objectReference: {fileID: 3697765106825849225, guid: d11d596707d9b0a4ebce713b42896b4b, type: 3}
+      objectReference: {fileID: 6171796242737222058, guid: 646a765e5d6b2524fb21727b47150cdd, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[42]
       value: 
-      objectReference: {fileID: 6171796242737222058, guid: 646a765e5d6b2524fb21727b47150cdd, type: 3}
+      objectReference: {fileID: 8007748810620118024, guid: e2ac49a16ad4ee7439fb078263e43a46, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[43]
       value: 
-      objectReference: {fileID: 1346119351389531366, guid: 7ac190ce7870bf840b8dd0557e30ae37, type: 3}
+      objectReference: {fileID: 4846761445844093780, guid: bf9f98f6cbd878b40bb92c88dc38b567, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[44]
       value: 
-      objectReference: {fileID: 8007748810620118024, guid: e2ac49a16ad4ee7439fb078263e43a46, type: 3}
+      objectReference: {fileID: 9051679015547662403, guid: ffb10d7314d88a944baa9a5f61aa06d8, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[45]
       value: 
-      objectReference: {fileID: 4846761445844093780, guid: bf9f98f6cbd878b40bb92c88dc38b567, type: 3}
+      objectReference: {fileID: 6673313139858311348, guid: c71abc942488f7a42bcc0be6832a3475, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[46]
       value: 
-      objectReference: {fileID: 9051679015547662403, guid: ffb10d7314d88a944baa9a5f61aa06d8, type: 3}
+      objectReference: {fileID: 5835188783272008509, guid: 84ff7a867764a6c45b8e31c822e792cc, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[47]
       value: 
-      objectReference: {fileID: 6673313139858311348, guid: c71abc942488f7a42bcc0be6832a3475, type: 3}
+      objectReference: {fileID: 7891812709467429174, guid: dc2a03393e4a3564fafe1cfe7b936fdb, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[48]
       value: 
-      objectReference: {fileID: 5835188783272008509, guid: 84ff7a867764a6c45b8e31c822e792cc, type: 3}
+      objectReference: {fileID: 9157479926085466063, guid: 678a5d58e7fbc1d4ba584b1e8f11ca89, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[49]
       value: 
-      objectReference: {fileID: 7891812709467429174, guid: dc2a03393e4a3564fafe1cfe7b936fdb, type: 3}
+      objectReference: {fileID: 5161332209872976458, guid: 2010e601c04821648a8a87db12057972, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[50]
       value: 
-      objectReference: {fileID: 9157479926085466063, guid: 678a5d58e7fbc1d4ba584b1e8f11ca89, type: 3}
+      objectReference: {fileID: 32157637997269599, guid: 329717905b1c5dc4fad5ce41edbe418f, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[51]
       value: 
-      objectReference: {fileID: 5161332209872976458, guid: 2010e601c04821648a8a87db12057972, type: 3}
+      objectReference: {fileID: 9080618843987399821, guid: bb92b9403e11bf64f8d18f48a1543ae3, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[52]
       value: 
-      objectReference: {fileID: 32157637997269599, guid: 329717905b1c5dc4fad5ce41edbe418f, type: 3}
+      objectReference: {fileID: 8003748164160126876, guid: 68c3c0fe05ef03f48944bbd5aaf8a14d, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[53]
       value: 
-      objectReference: {fileID: 9080618843987399821, guid: bb92b9403e11bf64f8d18f48a1543ae3, type: 3}
+      objectReference: {fileID: 7276802526511186261, guid: 1fc99bf119fdf0947b03f0042bfc75d4, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[54]
       value: 
-      objectReference: {fileID: 8003748164160126876, guid: 68c3c0fe05ef03f48944bbd5aaf8a14d, type: 3}
+      objectReference: {fileID: 8715657405463786255, guid: 505a2a8a628f7ca4095079badd609551, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[55]
       value: 
-      objectReference: {fileID: 7276802526511186261, guid: 1fc99bf119fdf0947b03f0042bfc75d4, type: 3}
+      objectReference: {fileID: 6051717648930026588, guid: d7c3ab0af7b93ed4b8a9a69151153c8a, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[56]
       value: 
-      objectReference: {fileID: 8715657405463786255, guid: 505a2a8a628f7ca4095079badd609551, type: 3}
+      objectReference: {fileID: 3498603807646255382, guid: 79d2c271d3058204d8ad8b589ee7df11, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[57]
       value: 
-      objectReference: {fileID: 6051717648930026588, guid: d7c3ab0af7b93ed4b8a9a69151153c8a, type: 3}
+      objectReference: {fileID: 4647648014702322440, guid: d5624a97fbda9fc4fb2667095302e078, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[58]
       value: 
-      objectReference: {fileID: 3498603807646255382, guid: 79d2c271d3058204d8ad8b589ee7df11, type: 3}
+      objectReference: {fileID: 7985793074902430980, guid: 8e4f1c75d3e129342b0f9c25480d81e7, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[59]
       value: 
-      objectReference: {fileID: 4647648014702322440, guid: d5624a97fbda9fc4fb2667095302e078, type: 3}
+      objectReference: {fileID: 4377206364819038819, guid: 9645fd78cb9f3ed4b938ef6b1d64a597, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[60]
       value: 
-      objectReference: {fileID: 7985793074902430980, guid: 8e4f1c75d3e129342b0f9c25480d81e7, type: 3}
+      objectReference: {fileID: 5114447374332888696, guid: fe0cb90546b3ca54c9632efc5452d259, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[61]
       value: 
-      objectReference: {fileID: 4377206364819038819, guid: 9645fd78cb9f3ed4b938ef6b1d64a597, type: 3}
+      objectReference: {fileID: 1004891880052476871, guid: e87041fd920a05a4194a8915956d6883, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[62]
       value: 
-      objectReference: {fileID: 5114447374332888696, guid: fe0cb90546b3ca54c9632efc5452d259, type: 3}
+      objectReference: {fileID: 3144590597548319942, guid: 311ce590f2959e44d85996962b390a78, type: 3}
     - target: {fileID: 4327818249109729151, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: viPrefabs.Array.data[63]
       value: 
-      objectReference: {fileID: 1004891880052476871, guid: e87041fd920a05a4194a8915956d6883, type: 3}
+      objectReference: {fileID: 1346119351389531366, guid: 0e7f00447ebcaa743bae02294540e690, type: 3}
     - target: {fileID: 4327818249296656855, guid: 8a44c7d2092654f4fbd833b42fb038db, type: 3}
       propertyPath: m_SortingOrder
       value: -2

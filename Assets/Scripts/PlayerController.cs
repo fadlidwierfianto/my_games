@@ -20,6 +20,10 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     public SpriteRenderer sprite;
     private bool facingLeft = false;
+    public Vector2 moveDir
+    {
+        get { return movement; }
+    }
 
     private void Awake()
     {
