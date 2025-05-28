@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 4327818249109729150}
   - component: {fileID: 4327818249109729151}
   - component: {fileID: 8031815836647907011}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: TerrainChunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 4327818249296656853}
   - component: {fileID: 4327818249296656854}
   - component: {fileID: 4327818249296656855}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Background_Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,8 +391,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -571406159
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -411,7 +411,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4327818249878618080}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PropsLocation3
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -442,7 +442,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4327818250017880908}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PropsLocation1
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -475,7 +475,7 @@ GameObject:
   - component: {fileID: 4327818250207448636}
   - component: {fileID: 4327818250207448638}
   - component: {fileID: 4327818250207448639}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: MainMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6379,7 +6379,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -6397,7 +6397,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4327818250241763853}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PropsLocation4
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -6428,7 +6428,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4327818250375810493}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6465,7 +6465,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4327818250538180827}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PropsLocation2
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -6496,7 +6496,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4327818250805034440}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PropsLocation5
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -6527,7 +6527,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4327818250848049478}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PropsLocation6
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
