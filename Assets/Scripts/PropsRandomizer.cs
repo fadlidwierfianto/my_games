@@ -45,6 +45,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PropsRandomizer : MonoBehaviour
 {
@@ -96,13 +97,26 @@ public class PropsRandomizer : MonoBehaviour
                 renderer.sortingOrder = -1;
             }
 
-            // Add collider to make the prop solid (blocks player movement)
+            // Add Rigidbody2D and CompositeCollider2D for solid collision
+            if (propvi.GetComponent<Rigidbody2D>() == null)
+            {
+                // Add Rigidbody2D
+                Rigidbody2D rb = propvi.AddComponent<Rigidbody2D>();
+                rb.bodyType = RigidbodyType2D.Static; // Static so props don't move
+            }
+
+            // Add BoxCollider2D if no collider exists
             if (propvi.GetComponent<Collider2D>() == null)
             {
-                // Add BoxCollider2D if no collider exists
-                BoxCollider2D collider = propvi.AddComponent<BoxCollider2D>();
-                // Make sure it's not a trigger so it blocks movement
-                collider.isTrigger = false;
+                BoxCollider2D boxCollider = propvi.AddComponent<BoxCollider2D>();
+                boxCollider.usedByComposite = true; // Required for CompositeCollider2D
+            }
+
+            if (propvi.GetComponent<CompositeCollider2D>() == null)
+            {
+                // Add CompositeCollider2D
+                CompositeCollider2D compositeCollider = propvi.AddComponent<CompositeCollider2D>();
+                compositeCollider.isTrigger = false; // Make sure it blocks movement
             }
         }
     }

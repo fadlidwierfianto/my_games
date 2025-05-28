@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8639296909149558989}
   - component: {fileID: 2830634249599004257}
   m_Layer: 0
-  m_Name: Trees_shadow_source_5 1
+  m_Name: Trees_shadow_source_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
