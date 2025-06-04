@@ -28,7 +28,7 @@ public class MapController : MonoBehaviour
     void Update()
     {
         ChunkChecker();
-        ChunkOptimzer();
+        ChunkOptimizer();
     }
 
     void ChunkChecker()
@@ -72,7 +72,7 @@ public class MapController : MonoBehaviour
         spawnedChunks.Add(latestChunk);
     }
 
-    void ChunkOptimzer()
+    void ChunkOptimizer()
     {
         optimizerCooldown -= Time.deltaTime;
 

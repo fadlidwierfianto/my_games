@@ -1,0 +1,71 @@
+{
+  "bodyTypeName": "male",
+  "url": "https://liberatedpixelcup.github.io/Universal-LPC-Spritesheet-Character-Generator/#?body=Skeleton_skeleton&head=Skeleton_skeleton&weapon=Dagger_dagger",
+  "spritesheets": "https://liberatedpixelcup.github.io/Universal-LPC-Spritesheet-Character-Generator/spritesheets/",
+  "version": 1,
+  "datetime": "03/06/2025, 09.05.36",
+  "credits": [
+    {
+      "fileName": "body/bodies/skeleton/skeleton.png",
+      "licenses": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+      "authors": "bluecarrot16,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+      "urls": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-medieval-fantasy-character-sprites,https://opengameart.org/content/lpc-skeleton,https://opengameart.org/content/lpc-character-bases",
+      "notes": ""
+    },
+    {
+      "fileName": "head/heads/skeleton/adult/skeleton.png",
+      "licenses": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+      "authors": "bluecarrot16,Johannes Sjölund (wulax),Stephen Challener (Redshrike)",
+      "urls": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-medieval-fantasy-character-sprites,https://opengameart.org/content/lpc-skeleton,https://opengameart.org/content/lpc-character-bases",
+      "notes": ""
+    },
+    {
+      "fileName": "weapon/sword/dagger/dagger.png",
+      "licenses": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+      "authors": "bluecarrot16,Johannes Sjölund (wulax),Matthew Krohn (makrohn)",
+      "urls": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites,https://opengameart.org/content/lpc-extended-weapon-animations",
+      "notes": ""
+    },
+    {
+      "fileName": "weapon/sword/dagger/behind/dagger.png",
+      "licenses": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+      "authors": "bluecarrot16,Johannes Sjölund (wulax),Matthew Krohn (makrohn)",
+      "urls": "https://opengameart.org/content/lpc-medieval-fantasy-character-sprites,https://opengameart.org/content/lpc-extended-weapon-animations",
+      "notes": ""
+    }
+  ],
+  "layers": [
+    {
+      "fileName": "weapon/sword/dagger/behind/dagger.png",
+      "zPos": 9,
+      "parentName": "weapon",
+      "name": "Dagger",
+      "variant": "dagger",
+      "supportedAnimations": "spellcast,thrust,walk,slash,shoot,hurt,watering"
+    },
+    {
+      "fileName": "body/bodies/skeleton/skeleton.png",
+      "zPos": 10,
+      "parentName": "body",
+      "name": "Skeleton",
+      "variant": "skeleton",
+      "supportedAnimations": "spellcast,thrust,walk,slash,shoot,hurt,watering"
+    },
+    {
+      "fileName": "head/heads/skeleton/adult/skeleton.png",
+      "zPos": 100,
+      "parentName": "head",
+      "name": "Skeleton",
+      "variant": "skeleton",
+      "supportedAnimations": "spellcast,thrust,walk,slash,shoot,hurt,watering,idle,jump,run,sit,emote,climb,combat,1h_slash,1h_backslash,1h_halfslash"
+    },
+    {
+      "fileName": "weapon/sword/dagger/dagger.png",
+      "zPos": 140,
+      "parentName": "weapon",
+      "name": "Dagger",
+      "variant": "dagger",
+      "supportedAnimations": "spellcast,thrust,walk,slash,shoot,hurt,watering"
+    }
+  ]
+}
