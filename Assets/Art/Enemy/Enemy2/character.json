@@ -1,0 +1,86 @@
+{
+  "bodyTypeName": "male",
+  "url": "https://liberatedpixelcup.github.io/Universal-LPC-Spritesheet-Character-Generator/#?body=Zombie_zombie&head=Zombie_zombie&shadow=none_Shadow&wound_arm=none_Arm&wound_brain=Brain_brain&wound_ribs=Ribs_ribs&wound_eye_right=none_Right_Eye&wound_mouth=Mouth_mouth&prosthesis_leg=none_Peg_leg",
+  "spritesheets": "https://liberatedpixelcup.github.io/Universal-LPC-Spritesheet-Character-Generator/spritesheets/",
+  "version": 1,
+  "datetime": "20/06/2025, 14.17.40",
+  "credits": [
+    {
+      "fileName": "body/bodies/zombie/zombie.png",
+      "licenses": "OGA-BY 3.0,CC-BY-SA 3.0,GPL 3.0",
+      "authors": "Stephen Challener (Redshrike),Johannes Sjölund (wulax),Sander Frenken (castelonia),Benjamin K. Smith (BenCreating),bluecarrot16",
+      "urls": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-medieval-fantasy-character-sprites,https://opengameart.org/content/lpc-zombie,https://opengameart.org/content/lpc-character-bases",
+      "notes": ""
+    },
+    {
+      "fileName": "body/wound/brain.png",
+      "licenses": "CC-BY-SA 3.0,GPL 3.0",
+      "authors": "Benjamin K. Smith (BenCreating),Sander Frenken (castelonia)",
+      "urls": "https://opengameart.org/content/lpc-zombie",
+      "notes": ""
+    },
+    {
+      "fileName": "body/wound/ribs.png",
+      "licenses": "CC-BY-SA 3.0,GPL 3.0",
+      "authors": "Benjamin K. Smith (BenCreating),Sander Frenken (castelonia)",
+      "urls": "https://opengameart.org/content/lpc-zombie",
+      "notes": ""
+    },
+    {
+      "fileName": "body/wound/mouth.png",
+      "licenses": "CC-BY-SA 3.0,GPL 3.0",
+      "authors": "Benjamin K. Smith (BenCreating),Sander Frenken (castelonia)",
+      "urls": "https://opengameart.org/content/lpc-zombie",
+      "notes": ""
+    },
+    {
+      "fileName": "head/heads/zombie/adult/zombie.png",
+      "licenses": "CC-BY-SA 3.0,GPL 3.0",
+      "authors": "bluecarrot16,Benjamin K. Smith (BenCreating),Sander Frenken (castelonia),Stephen Challener (Redshrike)",
+      "urls": "https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles,https://opengameart.org/content/lpc-zombie,https://opengameart.org/content/lpc-character-bases",
+      "notes": ""
+    }
+  ],
+  "layers": [
+    {
+      "fileName": "body/bodies/zombie/zombie.png",
+      "zPos": 10,
+      "parentName": "body",
+      "name": "Zombie",
+      "variant": "zombie",
+      "supportedAnimations": "spellcast,thrust,walk,slash,shoot,hurt,watering"
+    },
+    {
+      "fileName": "body/wound/ribs.png",
+      "zPos": 15,
+      "parentName": "wound_ribs",
+      "name": "Ribs",
+      "variant": "ribs",
+      "supportedAnimations": "spellcast,thrust,walk,slash,shoot,hurt,watering"
+    },
+    {
+      "fileName": "head/heads/zombie/adult/zombie.png",
+      "zPos": 100,
+      "parentName": "head",
+      "name": "Zombie",
+      "variant": "zombie",
+      "supportedAnimations": "spellcast,thrust,walk,slash,shoot,hurt,watering,idle,jump,run,sit,emote,climb,combat,1h_slash,1h_backslash,1h_halfslash"
+    },
+    {
+      "fileName": "body/wound/brain.png",
+      "zPos": 115,
+      "parentName": "wound_brain",
+      "name": "Brain",
+      "variant": "brain",
+      "supportedAnimations": "spellcast,thrust,walk,slash,shoot,hurt,watering,idle,jump,run,sit,emote,climb,combat,1h_slash,1h_backslash,1h_halfslash"
+    },
+    {
+      "fileName": "body/wound/mouth.png",
+      "zPos": 115,
+      "parentName": "wound_mouth",
+      "name": "Mouth",
+      "variant": "mouth",
+      "supportedAnimations": "spellcast,thrust,walk,slash,shoot,hurt,watering,idle,jump,run,sit,emote,climb,combat,1h_slash,1h_backslash,1h_halfslash"
+    }
+  ]
+}
