@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class EnemySpawn : MonoBehaviour
 {
-    public List<GameObject> enemyPrefabs; // Changed to List<GameObject>
+    public List<GameObject> enemyPrefabs;
     public float spawnRate = 1f; // Start rate: 1 enemy/sec
     public float increaseInterval = 30f;
     public float maxSpawnRate = 10f;

@@ -45,7 +45,7 @@ public class PropsRandomizer : MonoBehaviour
             SpriteRenderer spriteRenderer = propvi.GetComponent<SpriteRenderer>();
             if (spriteRenderer != null)
             {
-                spriteRenderer.sortingOrder = -1;
+                spriteRenderer.sortingOrder = -2;
             }
 
             // If the prop has child objects with SpriteRenderers, set their sorting order too

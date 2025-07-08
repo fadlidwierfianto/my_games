@@ -2,36 +2,50 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [Header("Chase Settings")]
-    public Transform player;
-    public float chaseSpeed = 3f;
-    public float detectionRange = 10f;
-    public bool alwaysChase = true; // Set true untuk selalu mengejar
+    [Header("Movement Settings")]
+    [SerializeField]
+    private float moveSpeed = 2f;
 
-    [Header("Animation")]
+    [SerializeField]
+    private float stoppingDistance = 0.5f;
+
+    [SerializeField]
+    private float detectionRange = 10f;
+
+    [Header("Components")]
+    private Transform player;
     private Animator animator;
     private Rigidbody2D rb;
 
-    // Parameter animator sesuai dengan setup Anda
-    private readonly string moveXParam = "moveX";
-    private readonly string moveYParam = "moveY";
-    private readonly string movingParam = "moving";
+    [Header("Debug")]
+    [SerializeField]
+    private bool showDebugGizmos = true;
 
     private Vector2 movement;
     private Vector2 lastMovement;
+    private bool isMoving = false;
 
     void Start()
     {
-        // Dapatkan komponen yang dibutuhkan
+        // Inisialisasi komponen
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
 
-        // Jika player tidak di-assign, cari GameObject dengan tag "Player"
-        if (player == null)
+        // Cari player berdasarkan tag
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
         {
-            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-            if (playerObj != null)
-                player = playerObj.transform;
+            player = playerObj.transform;
+        }
+        else
+        {
+            Debug.LogWarning("Player tidak ditemukan! Pastikan player memiliki tag 'Player'");
+        }
+
+        // Pastikan Rigidbody2D tidak terpengaruh gravity jika ini game top-down
+        if (rb != null)
+        {
+            rb.gravityScale = 0f;
         }
     }
 
@@ -43,97 +57,138 @@ public class EnemyMovement : MonoBehaviour
         // Hitung jarak ke player
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
-        // Optimasi: Kurangi update frequency untuk enemy yang jauh
-        if (distanceToPlayer > 50f && Time.time % 0.5f > 0.1f)
-            return;
-
-        // Tentukan apakah enemy harus mengejar
-        bool shouldChase = alwaysChase || distanceToPlayer <= detectionRange;
-
-        if (shouldChase)
+        // Cek apakah player dalam jangkauan detection
+        if (distanceToPlayer <= detectionRange)
         {
-            ChasePlayer();
+            // Hitung arah ke player
+            Vector2 direction = (player.position - transform.position).normalized;
+
+            // Cek apakah sudah cukup dekat dengan player
+            if (distanceToPlayer > stoppingDistance)
+            {
+                movement = direction;
+                isMoving = true;
+            }
+            else
+            {
+                movement = Vector2.zero;
+                isMoving = false;
+            }
         }
         else
         {
-            StopChasing();
+            // Player di luar jangkauan, berhenti bergerak
+            movement = Vector2.zero;
+            isMoving = false;
         }
 
-        // Update animasi
-        UpdateAnimation();
-    }
-
-    void ChasePlayer()
-    {
-        // Hitung arah ke player
-        Vector2 direction = (player.position - transform.position).normalized;
-        movement = direction;
-
-        // Gerakkan enemy
-        rb.velocity = movement * chaseSpeed;
-
-        // Simpan arah terakhir untuk animasi
-        if (movement.magnitude > 0.1f)
-        {
-            lastMovement = movement;
-        }
-    }
-
-    void StopChasing()
-    {
-        movement = Vector2.zero;
-        rb.velocity = Vector2.zero;
-    }
-
-    void UpdateAnimation()
-    {
-        // Set parameter animasi
-        bool isMoving = movement.magnitude > 0.1f;
-
-        animator.SetFloat(moveXParam, lastMovement.x);
-        animator.SetFloat(moveYParam, lastMovement.y);
-        animator.SetBool(movingParam, isMoving);
+        // Update animator parameters
+        UpdateAnimator();
     }
 
     void FixedUpdate()
     {
-        // Alternative movement menggunakan FixedUpdate untuk physics yang lebih smooth
-        // Uncomment jika ingin menggunakan ini dan comment bagian rb.velocity di ChasePlayer()
-
-        /*
-        if (movement.magnitude > 0.1f)
+        // Gerakkan enemy menggunakan Rigidbody2D
+        if (rb != null && isMoving)
         {
-            rb.MovePosition(rb.position + movement * chaseSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
         }
-        */
     }
 
-    // Method untuk debugging - tampilkan detection range di scene view
+    void UpdateAnimator()
+    {
+        if (animator == null)
+            return;
+
+        // Jika sedang bergerak, gunakan movement vector saat ini
+        if (isMoving)
+        {
+            animator.SetFloat("moveX", movement.x);
+            animator.SetFloat("moveY", movement.y);
+            lastMovement = movement;
+        }
+        else
+        {
+            // Jika tidak bergerak, gunakan arah terakhir untuk idle animation
+            animator.SetFloat("moveX", lastMovement.x);
+            animator.SetFloat("moveY", lastMovement.y);
+        }
+
+        // Optional: Set boolean untuk state bergerak
+        animator.SetBool("isMoving", isMoving);
+    }
+
+    // Method untuk mengubah target player (jika diperlukan)
+    public void SetTarget(Transform newTarget)
+    {
+        player = newTarget;
+    }
+
+    // Method untuk mengubah kecepatan movement
+    public void SetMoveSpeed(float newSpeed)
+    {
+        moveSpeed = newSpeed;
+    }
+
+    // Method untuk menghentikan enemy sementara
+    public void StopMovement()
+    {
+        movement = Vector2.zero;
+        isMoving = false;
+        UpdateAnimator();
+    }
+
+    // Method untuk melanjutkan movement
+    public void ResumeMovement()
+    {
+        // Movement akan otomatis resume di Update()
+    }
+
+    // Gizmos untuk debug di Scene view
     void OnDrawGizmosSelected()
     {
-        if (!alwaysChase)
+        if (!showDebugGizmos)
+            return;
+
+        // Draw detection range (circle)
+        Gizmos.color = Color.yellow;
+        DrawWireCircle2D(transform.position, detectionRange);
+
+        // Draw stopping distance (circle)
+        Gizmos.color = Color.red;
+        DrawWireCircle2D(transform.position, stoppingDistance);
+
+        // Draw line to player
+        if (player != null)
         {
-            Gizmos.color = Color.red;
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(transform.position, player.position);
+        }
 
-            // Gambar lingkaran menggunakan segments untuk kompatibilitas
-            int segments = 32;
-            float angle = 0f;
-            Vector3 lastPoint = Vector3.zero;
+        // Draw movement direction
+        if (isMoving)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawRay(transform.position, movement * 2f);
+        }
+    }
 
-            for (int i = 0; i <= segments; i++)
-            {
-                float x = Mathf.Sin(Mathf.Deg2Rad * angle) * detectionRange;
-                float y = Mathf.Cos(Mathf.Deg2Rad * angle) * detectionRange;
-                Vector3 currentPoint = transform.position + new Vector3(x, y, 0);
+    // Helper method untuk draw circle di 2D
+    void DrawWireCircle2D(Vector3 center, float radius)
+    {
+        int segments = 36;
+        float angleStep = 360f / segments;
 
-                if (i > 0)
-                {
-                    Gizmos.DrawLine(lastPoint, currentPoint);
-                }
+        Vector3 prevPoint = center + new Vector3(radius, 0, 0);
 
-                lastPoint = currentPoint;
-                angle += (360f / segments);
-            }
+        for (int i = 1; i <= segments; i++)
+        {
+            float angle = i * angleStep * Mathf.Deg2Rad;
+            Vector3 newPoint =
+                center + new Vector3(Mathf.Cos(angle) * radius, Mathf.Sin(angle) * radius, 0);
+
+            Gizmos.DrawLine(prevPoint, newPoint);
+            prevPoint = newPoint;
         }
     }
 }
