@@ -8,112 +8,64 @@ public class Enemy : MonoBehaviour, IDamageable
     public int maxHealth = 100;
     public int currentHealth;
     public int damage = 20;
-    public float knockbackForce = 5f;
-
-    [Header("Knockback Settings")]
-    public float knockbackDuration = 0.3f;
-    public float knockbackResistance = 1f; // Multiplier untuk knockback strength
+    public int pointsReward = 10;
 
     [Header("Death Settings")]
-    public float deathDelay = 1f; // Delay sebelum destroy object
+    public float deathDelay = 1f;
 
     // Components
     private Rigidbody2D rb;
-    private Animator animator;
     private SpriteRenderer spriteRenderer;
 
     // State
     private bool isDead = false;
-    private bool isKnockedBack = false;
-    private Vector2 originalVelocity;
+
+    // Reference ke spawn manager untuk tracking yang lebih baik
+    private static EnemySpawn spawnManager;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         currentHealth = maxHealth;
+
+        // Cari spawn manager jika belum ada
+        if (spawnManager == null)
+        {
+            spawnManager = FindObjectOfType<EnemySpawn>();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Jangan damage player jika enemy sudah mati
         if (isDead)
             return;
 
         PlayerController player = collision.GetComponent<PlayerController>();
         if (player != null)
         {
-            Vector2 knockbackDir = (collision.transform.position - transform.position).normalized;
-            player.TakeDamage(damage, knockbackDir);
+            player.TakeDamage(damage);
         }
     }
 
-    // Implementasi IDamageable interface
     public void TakeDamage(int damageAmount, Vector2 knockbackDirection)
     {
-        // Jangan terima damage jika sudah mati
         if (isDead)
             return;
 
-        // Kurangi health
         currentHealth -= damageAmount;
 
-        // Debug log untuk testing
-        Debug.Log(
-            $"{gameObject.name} took {damageAmount} damage. Health: {currentHealth}/{maxHealth}"
-        );
-
-        // Visual feedback
         StartCoroutine(DamageFlash());
 
-        // Apply knockback
-        ApplyKnockback(knockbackDirection);
-
-        // Cek apakah enemy mati
         if (currentHealth <= 0)
         {
             Die();
         }
     }
 
-    private void ApplyKnockback(Vector2 knockbackDirection)
-    {
-        if (rb != null && !isKnockedBack)
-        {
-            // Simpan velocity asli jika ada enemy movement
-            originalVelocity = rb.velocity;
-
-            // Apply knockback force
-            Vector2 knockbackForceVector =
-                knockbackDirection * knockbackForce * knockbackResistance;
-            rb.AddForce(knockbackForceVector, ForceMode2D.Impulse);
-
-            // Start knockback coroutine
-            StartCoroutine(KnockbackCoroutine());
-        }
-    }
-
-    private IEnumerator KnockbackCoroutine()
-    {
-        isKnockedBack = true;
-
-        // Wait untuk knockback duration
-        yield return new WaitForSeconds(knockbackDuration);
-
-        // Reset velocity (atau kembali ke movement normal)
-        if (rb != null && !isDead)
-        {
-            rb.velocity = Vector2.zero; // Atau kembali ke originalVelocity jika ada AI movement
-        }
-
-        isKnockedBack = false;
-    }
-
     private IEnumerator DamageFlash()
     {
-        // Flash effect dengan mengubah warna sprite
         if (spriteRenderer != null)
         {
             Color originalColor = spriteRenderer.color;
@@ -132,16 +84,9 @@ public class Enemy : MonoBehaviour, IDamageable
 
         isDead = true;
 
-        Debug.Log($"{gameObject.name} died!");
+        GivePointsToPlayer();
 
-        // Trigger death animation
-        if (animator != null)
-        {
-            animator.SetTrigger("Die");
-            animator.SetBool("isDead", true);
-        }
-
-        // Disable collider agar tidak bisa damage player lagi
+        // Disable collider
         Collider2D col = GetComponent<Collider2D>();
         if (col != null)
         {
@@ -152,18 +97,35 @@ public class Enemy : MonoBehaviour, IDamageable
         if (rb != null)
         {
             rb.velocity = Vector2.zero;
-            rb.isKinematic = true; // Atau disable rigidbody
+            rb.isKinematic = true;
         }
 
-        // Destroy object setelah delay
         StartCoroutine(DestroyAfterDelay());
+    }
+
+    private void GivePointsToPlayer()
+    {
+        PlayerController player = FindObjectOfType<PlayerController>();
+
+        if (player != null)
+        {
+            player.AddPoints(pointsReward);
+        }
+    }
+
+    public void GivePointsToPlayer(PlayerController targetPlayer)
+    {
+        if (targetPlayer != null)
+        {
+            targetPlayer.AddPoints(pointsReward);
+        }
     }
 
     private IEnumerator DestroyAfterDelay()
     {
         yield return new WaitForSeconds(deathDelay);
 
-        // Fade out effect (optional)
+        // Fade out effect
         if (spriteRenderer != null)
         {
             float fadeTime = 0.5f;
@@ -179,18 +141,25 @@ public class Enemy : MonoBehaviour, IDamageable
             }
         }
 
+        // Notifikasi ke spawn manager bahwa enemy ini akan destroyed
+        NotifySpawnManager();
+
         Destroy(gameObject);
     }
 
-    // Public methods untuk AI atau sistem lain
+    // Method untuk memberitahu spawn manager
+    private void NotifySpawnManager()
+    {
+        if (spawnManager != null)
+        {
+            // Spawn manager akan otomatis cleanup null references
+            // Jadi tidak perlu action khusus di sini
+        }
+    }
+
     public bool IsDead()
     {
         return isDead;
-    }
-
-    public bool IsKnockedBack()
-    {
-        return isKnockedBack;
     }
 
     public float GetHealthPercentage()
@@ -198,39 +167,52 @@ public class Enemy : MonoBehaviour, IDamageable
         return (float)currentHealth / maxHealth;
     }
 
-    // Method untuk heal enemy jika diperlukan
+    public int GetPointsReward()
+    {
+        return pointsReward;
+    }
+
+    public void SetPointsReward(int newPointsReward)
+    {
+        pointsReward = Mathf.Max(0, newPointsReward);
+    }
+
     public void Heal(int healAmount)
     {
         if (isDead)
             return;
 
         currentHealth = Mathf.Min(currentHealth + healAmount, maxHealth);
-        Debug.Log(
-            $"{gameObject.name} healed for {healAmount}. Health: {currentHealth}/{maxHealth}"
-        );
     }
 
-    // Gizmos untuk debugging
+    // Method untuk mendapatkan spawn manager reference
+    public static EnemySpawn GetSpawnManager()
+    {
+        return spawnManager;
+    }
+
     private void OnDrawGizmosSelected()
     {
-        // Draw health bar di atas enemy
         if (Application.isPlaying)
         {
             Vector3 healthBarPos = transform.position + Vector3.up * 1.5f;
             float healthPercentage = GetHealthPercentage();
 
-            // Background
             Gizmos.color = Color.red;
             Gizmos.DrawLine(
                 healthBarPos - Vector3.right * 0.5f,
                 healthBarPos + Vector3.right * 0.5f
             );
 
-            // Health bar
             Gizmos.color = Color.green;
             Vector3 healthBarEnd =
                 healthBarPos - Vector3.right * 0.5f + Vector3.right * healthPercentage;
             Gizmos.DrawLine(healthBarPos - Vector3.right * 0.5f, healthBarEnd);
+
+#if UNITY_EDITOR
+            Vector3 pointTextPos = transform.position + Vector3.up * 2f;
+            UnityEditor.Handles.Label(pointTextPos, $"Points: {pointsReward}");
+#endif
         }
     }
 }

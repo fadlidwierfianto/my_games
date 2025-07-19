@@ -169,8 +169,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e3137c92821494f86327aa2d9e169a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
-  knockbackForce: 5
+  maxHealth: 100
+  currentHealth: 0
+  damage: 10
+  pointsReward: 10
+  deathDelay: 0.5
 --- !u!114 &1695419862938135712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a5166b5191f50049bc10a683ee3923c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  chaseSpeed: 2
-  detectionRange: 10
-  alwaysChase: 1
+  moveSpeed: 1.5
+  stoppingDistance: 0.5
+  detectionRange: 50
+  showDebugGizmos: 1
